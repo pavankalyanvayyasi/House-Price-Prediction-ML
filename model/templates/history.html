@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2563eb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .price {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>House Price Prediction History</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Area</th>
+                    <th>Bedrooms</th>
+                    <th>Bathrooms</th>
+                    <th>Year Built</th>
+                    <th>Location</th>
+                    <th>Predicted Price</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.id }}</td>
+                    <td>{{ record.area_sqft }} sq. ft.</td>
+                    <td>{{ record.bedrooms }}</td>
+                    <td>{{ record.bathrooms }}</td>
+                    <td>{{ record.year_built }}</td>
+                    <td>{{ record.location }}</td>
+                    <td class="price">
+                        ₹ {{ "{:,.2f}".format(record.predicted_price) }}
+                    </td>
+                    <td>{{ record.created_at }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="8">No prediction history available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/" class="back-link">Predict Another House</a>
+    </div>
+</body>
+</html>
