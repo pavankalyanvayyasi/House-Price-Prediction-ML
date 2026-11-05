@@ -44,13 +44,13 @@ It also integrates MySQL to store prediction records and provides an analytics d
 
 The home page allows users to enter property details and request a house price prediction.
 
-![House Price Prediction Home Page](screenshots/1.home-page.png)
+![Home Page](screenshots/home-page.png)
 
 ### 2. House Price Prediction Dashboard
 
 Displays important prediction statistics, including total predictions, average price, highest price, and lowest price.
 
-![House Price Prediction Dashboard](screenshots/2.dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
 ### 3. Prediction Analytics Dashboard
 
